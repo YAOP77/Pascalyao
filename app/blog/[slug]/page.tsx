@@ -4,56 +4,56 @@ import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/lib/config";
 
-export async function generateStaticParams() {
-  let posts = getBlogPosts();
+// export async function generateStaticParams() {
+//   let posts = getBlogPosts();
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
 
-export async function generateMetadata({
-  params,
-}): Promise<Metadata | undefined> {
-  const { slug } = await params;
-  let post = getBlogPosts().find((post) => post.slug === slug);
-  if (!post) {
-    return;
-  }
+// export async function generateMetadata({
+//   params,
+// }): Promise<Metadata | undefined> {
+//   const { slug } = await params;
+//   let post = getBlogPosts().find((post) => post.slug === slug);
+//   if (!post) {
+//     return;
+//   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  let ogImage = image
-    ? image
-    : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
+//   let {
+//     title,
+//     publishedAt: publishedTime,
+//     summary: description,
+//     image,
+//   } = post.metadata;
+//   let ogImage = image
+//     ? image
+//     : `${metaData.baseUrl}/og?title=${encodeURIComponent(title)}`;
 
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime,
-      url: `${metaData.baseUrl}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
-}
+//   return {
+//     title,
+//     description,
+//     openGraph: {
+//       title,
+//       description,
+//       type: "article",
+//       publishedTime,
+//       url: `${metaData.baseUrl}/blog/${post.slug}`,
+//       images: [
+//         {
+//           url: ogImage,
+//         },
+//       ],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title,
+//       description,
+//       images: [ogImage],
+//     },
+//   };
+// }
 
 export default async function Blog({ params }) {
   const { slug } = await params;
@@ -65,7 +65,7 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <script
+      {/* <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
@@ -86,7 +86,7 @@ export default async function Blog({ params }) {
             },
           }),
         }}
-      />
+      /> */}
       <h1 className="title mb-3 font-medium text-2xl">{post.metadata.title}</h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-medium">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">

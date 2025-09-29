@@ -1,19 +1,26 @@
 import Link from "next/link";
 import { formatDate, getBlogPosts } from "app/lib/posts";
 
-export const metadata = {
-  title: "Blog",
-  description: "Nextfolio Blog",
-};
+// export const metadata = {
+//   title: "Blog",
+//   description: "Nextfolio Blog",
+// };
 
 export default function BlogPosts() {
   let allBlogs = getBlogPosts();
 
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium">Our Blog</h1>
+      {/* <h1 className="mb-8 text-2xl font-medium">About Me</h1> */}
       <div>
-        {allBlogs
+        <p>
+          I’m passionate about building robust, clean, and scalable project architectures that stand the test of time.  
+          With <span className="text-neutral-500"> React.js, Next.js, Node.js, and TypeScript</span>, I focus on creating modern web applications that combine performance, usability, and long-term maintainability.  
+          <br />
+          <br />
+          I’m always exploring new technologies and taking on challenges that help me grow as a developer.
+        </p>
+        {/* {allBlogs
           .sort((a, b) => {
             if (
               new Date(a.metadata.publishedAt) >
@@ -38,7 +45,7 @@ export default function BlogPosts() {
                 </p>
               </div>
             </Link>
-          ))}
+          ))} */}
       </div>
     </section>
   );
