@@ -1,6 +1,8 @@
+
 import Link from "next/link";
 import type { Metadata } from "next";
 import { projects } from "./project-data";
+import AnimatedProject from "./AnimatedProject";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium">Projects</h1>
+      {/* <h1 className="mb-8 text-2xl font-medium">Projects</h1> */}
       <div>
         {projects.map((project, index) => (
           <Link
@@ -21,10 +23,12 @@ export default function Projects() {
             rel="noopener noreferrer"
           >
             <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-              <h2 className="text-black dark:text-white">{project.title}</h2>
-              <p className="text-neutral-600 dark:text-neutral-400">
-                {project.description}
-              </p>
+              <div>
+                <AnimatedProject title={project.title} delay={index * 0.2} />
+                <p className="span text-neutral-500 hover:text-neutral-600 text-sm duration-1000">
+                  {project.description}
+                </p>
+              </div>
             </div>
           </Link>
         ))}
